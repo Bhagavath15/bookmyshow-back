@@ -27,6 +27,6 @@ app.get("/", auth, function (request, response) {
 
 
 
-app.use("/movies", signinRouter);
+app.use("/users", signinRouter);
 
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
