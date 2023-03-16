@@ -3,6 +3,9 @@ import express from "express"; // "type": "module"
 import { MongoClient } from 'mongodb'
 import * as dotenv from 'dotenv'
 import signinRouter from './router/login.router.js';
+import moviesRouter from "./router/movies.router.js";
+import theatreRouter from "./router/theatre.router.js";
+
 import { auth } from "./middleware/auth.js";
 import cors from "cors";
 
@@ -26,7 +29,8 @@ app.get("/", auth, function (request, response) {
 });
 
 
-
+app.use("/", moviesRouter)
+app.use("/", theatreRouter)
 app.use("/users", signinRouter);
 
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
