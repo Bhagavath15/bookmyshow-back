@@ -7,14 +7,14 @@ import {
 } from "../service/theatre.service.js"
 const router = express.Router()
 
-router.get("/booking", async function (request, response) {
+router.get("/booking", auth, async function (request, response) {
     const result = await getTheatre()
     console.log(result)
 
     response.send(result)
 })
 
-router.post("/add-theatre", async function (request, response) {
+router.post("/add-theatre", auth, async function (request, response) {
     const data = request.body
     console.log(data)
     //db.movies.insertMany()
@@ -22,7 +22,7 @@ router.post("/add-theatre", async function (request, response) {
     console.log(result)
 })
 
-router.delete('/theatre/:id', async function (request, response) {
+router.delete('/theatre/:id', auth, async function (request, response) {
     const { id } = request.params
     // const movie = movies.find((mv) => mv.id === id)
     console.log(id)
@@ -34,7 +34,7 @@ router.delete('/theatre/:id', async function (request, response) {
         : response.status(404).send({ message: "Theatre is not found" })
 })
 
-router.put("/booking/edit-theatre/:id", async function (request, response) {
+router.put("/booking/edit-theatre/:id", auth, async function (request, response) {
     const { id } = request.params
     const data = request.body
     console.log(data)

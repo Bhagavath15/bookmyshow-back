@@ -17,7 +17,7 @@ async function genhashpassword(password) {
 }
 //   genhashpassword("password@123")
 
-router.post("/signup", async function (request, response) {
+router.post("/signup", auth, async function (request, response) {
     const { username, password } = request.body;
 
     const userfromdb = await getuserbyname(username)
@@ -44,7 +44,7 @@ router.post("/signup", async function (request, response) {
 
 //   login
 
-router.post("/login", async function (request, response) {
+router.post("/login", auth, async function (request, response) {
     const { username, password } = request.body;
 
     const userfromdb = await getuserbyname(username)
