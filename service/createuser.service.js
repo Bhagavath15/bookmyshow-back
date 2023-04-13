@@ -2,7 +2,7 @@ import { client } from '../index.js';
 
 export async function hashpass(username, hashpassword) {
     return await client
-        .db("signup")
+        .db("database")
         .collection("signup")
         .insertOne({
             username: username,
@@ -12,7 +12,7 @@ export async function hashpass(username, hashpassword) {
 
 export async function getuserbyname(username, hashpassword) {
     return await client
-        .db("signup")
+        .db("database")
         .collection("signup")
         .findOne({
             username: username
